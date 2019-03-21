@@ -34,11 +34,26 @@ class TextBody:
                            for label, _ in sentlabels]
                            for sentlabels in self.labels]
 
-    # def positives(self):
-    #     return [[flat for (sent, prob), (label, flat) in zip(sentiments, labels) if sent >= 3 and prob > .2] for sentiments, labels in self.sentiments, self.labels]
-    #
-    # def negatives(self):
-    #     return [[flat for (sent, prob), (label, flat) in zip(sentiments, labels) if sent <= 1 and prob > .2] for sentiments, labels in self.sentiments, self.labels]
+    def positives(self):
+        return [
+            [flat for (sent, prob), (label, flat) in zip(sentiments, labels)
+             if (sent >= 3 and prob > .2)]
+            for sentiments, labels in zip(self.sentiments, self.labels)
+        ]
+
+    def negatives(self):
+        return [
+            [flat for (sent, prob), (label, flat) in zip(sentiments, labels)
+             if (sent <= 1 and prob > .2)]
+            for sentiments, labels in zip(self.sentiments, self.labels)
+        ]
+
+    def neutrals(self):
+        return [
+            [flat for (sent, prob), (label, flat) in zip(sentiments, labels)
+             if (sent == 2 or prob <= .2)]
+            for sentiments, labels in zip(self.sentiments, self.labels)
+        ]
 
 
     def getsentiment(self):
