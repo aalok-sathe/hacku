@@ -40,12 +40,15 @@ def add_text(*args, **kwargs):
 #     texts += [raw_text]
 
 add_text('hello darkness my old friend')
+add_text('my computer is poop and drives me crazy when it heats up')
 for tb in _senti.get_texts():
     print(tb)
     print(tb.getsentiment())
-    print('positives', tb.positives())
-    print('neutrals', tb.neutrals())
-    print('negatives', tb.positives())
+    print('positives', *tb.positives(), sep='\n')
+    print()
+    print('neutrals', *tb.neutrals(), sep='\n')
+    print()
+    print('negatives', *tb.negatives(), sep='\n')
 
 
 if __name__ == '__main__':
