@@ -15,7 +15,7 @@ class TextBody:
     tokens = None
     # sentiments = None
     nlp = None
-    trees
+    trees = None
 
 
     def __init__(self, text=None):
