@@ -40,10 +40,12 @@ def add_text(*args, **kwargs):
 #     texts += [raw_text]
 
 add_text('hello darkness my old friend')
-it = _senti.get_texts()
-tb = [*it][0]
-print(tb)
-print(tb.getsentiment())
+for tb in _senti.get_texts():
+    print(tb)
+    print(tb.getsentiment())
+    print('positives', tb.positives())
+    print('neutrals', tb.neutrals())
+    print('negatives', tb.positives())
 
 
 if __name__ == '__main__':
