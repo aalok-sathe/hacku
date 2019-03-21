@@ -13,7 +13,8 @@ prioritizing, visualizing, and tackling issues
 users may be facing
 
 ### prerequisites
-- Python 3.6 or higher (https://python.org/3)
+- `git clone https://github.com/aalok-sathe/hacku && cd hacku`
+- Python 3.6 or higher (https://python.org/)
 - StanfordCoreNLP
   - to download, do:
     ```bash
@@ -35,3 +36,7 @@ java -mx3g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -timeout 1000
 
 
 ### usage
+```bash
+    $ python3
+    >>> import sentipriori
+```
