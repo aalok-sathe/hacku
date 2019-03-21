@@ -6,6 +6,26 @@ import sys
 # local
 import text
 import sentiment
+# import clusters
+
+class SentiPrioriProc:
+    texts = None
+    issues = None
+
+
+    def __init__(self):
+        texts = []
+
+
+    def reset(self):
+        self.texts = []
+
+
+senti = SentiPrioriProc()
+
+
+def process_text(raw_text):
+    texts += [raw_text]
 
 
 if __name__ == '__main__':
