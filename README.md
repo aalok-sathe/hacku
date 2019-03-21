@@ -28,9 +28,9 @@ users may be facing
   cd stanford-corenlp-full-2018-10-05
 java -mx3g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -timeout 10000
   ```
-- The `pycorenlp` package
+- `pycorenlp, nltk`, and other packages
   ```bash
-  python3 -m pip install pycorenlp
+  python3 -m pip install -r requirements.txt
   ```
 
 
