@@ -10,9 +10,9 @@ class NLPBackend:
 
 
     def annotate(self, text):
-        return nlp.annotate(text=sent,
-                           properties = {'annotators': 'sentiment',
-                                         'outputFormat': 'json'})
+        return self.nlp.annotate(text=text,
+                                 properties = {'annotators': 'sentiment',
+                                               'outputFormat': 'json'})
 
 
 def getsentimentfromlabel(treelabel):
@@ -23,4 +23,4 @@ def getsentimentfromlabel(treelabel):
 
 
 def overallsentiment(tree):
-    return getsentimentfromlabel(subtree.label())
+    return getsentimentfromlabel(tree.label())

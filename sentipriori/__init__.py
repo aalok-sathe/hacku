@@ -12,21 +12,43 @@ import sentiment
 class SentiPrioriProc:
     texts = None
     issues = None
+    nlp = sentiment.NLPBackend()
 
 
     def __init__(self):
-        texts = []
+        self.texts = []
 
 
     def reset(self):
         self.texts = []
 
 
-senti = SentiPrioriProc()
+    def add_text(self, txt):
+        txtbdy = text.TextBody(txt, self.nlp)
+        self.texts.append(txtbdy)
 
 
-def process_text(raw_text):
-    texts += [raw_text]
+    def get_texts(self):
+        return iter(self.texts)
+
+_senti = SentiPrioriProc()
+
+def add_text(*args, **kwargs):
+    _senti.add_text(*args, **kwargs)
+
+# def process_text(raw_text):
+#     texts += [raw_text]
+
+add_text('hello darkness my old friend')
+add_text('my computer is poop and drives me crazy when it heats up')
+for tb in _senti.get_texts():
+    print(tb)
+    print(tb.getsentiment())
+    print('positives', *tb.positives(), sep='\n')
+    print()
+    print('neutrals', *tb.neutrals(), sep='\n')
+    print()
+    print('negatives', *tb.negatives(), sep='\n')
 
 
 if __name__ == '__main__':
