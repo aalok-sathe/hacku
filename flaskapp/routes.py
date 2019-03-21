@@ -1,5 +1,14 @@
 from flask import jsonify, request
+
 from flaskapp import app
+from flaskapp.exceptions import InvalidUsage
+
+
+@app.errorhandler(InvalidUsage)
+def handle_invalid_usage(error):
+    response = jsonify(error.to_dict())
+    response.status_code = error.status_code
+    return response
 
 @app.route('/business')
 def search_business():
@@ -30,6 +39,8 @@ def find_business_matches(name, city, state):
 @app.route('/analysis')
 def analyze():
     business_id = request.args.get('business_id', default=None)
+    if business_id is None:
+        raise InvalidUsage('business_id not supplied', status_code=400)
     data = {
         'business_id': business_id,
         'description': 'This is bullshit',
