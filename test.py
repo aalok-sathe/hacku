@@ -53,6 +53,9 @@ if __name__ == '__main__':
                   'yA6dKNm_zl1ucZCnwW8ZCg',
                   'zvO-PJCpNk4fgAVUnExYAA']
 
-    for biz in businesses:
-        this_obj = get_obj_for_bus(biz)
-        b64s = this_obj.plot_clouds(biz)
+    with open('YelpData/business_trimmed.json', 'r') as f:
+        data = json.load(f)
+
+    for _id in businesses:
+        [bus] = [x for x in data if x['business_id'] == _id]
+        print(bus)
