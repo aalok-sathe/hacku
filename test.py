@@ -3,25 +3,40 @@ import sentipriori
 
 import json
 import random
+from glob import glob
+import pickle
+from pathlib import Path
 
 
 if __name__ == '__main__':
-    business1 = '7sb2FYLS2sejZKxRYF9mtg'
-    business2 = 'zvO-PJCpNk4fgAVUnExYAA'
+    businesses = '7sb2FYLS2sejZKxRYF9mtg', 'zvO-PJCpNk4fgAVUnExYAA', 'v*'
 
-    for biz in [business2, business1]:
-        print('processing for ' + biz)
-
+    for biz in ['vHz*']:
         spp = sentipriori.SentiPrioriProc()
-        with open('YelpData/sample_review_by_business/' + biz) as f:
-            lines = f.readlines()
-            random.shuffle(lines)
-            for line in lines[:128]:
-                data = json.loads(line)
-                try:
-                    spp.add_text(data['text'])
-                except TypeError:
-                    continue
-        print(spp.ctrs['positives'].most_common(60)[10:])
-        print(spp.ctrs['negatives'].most_common(60)[10:])
+        path = Path(glob('./YelpData/sample_review_by_business/' + biz)[0])
+        archivepath = Path('./archive') / path.stem
+
+        print('processing for ' + str(path))
+
+
+        if not archivepath.exists():
+            with open(str(path), 'r') as f:
+                lines = f.readlines()
+                random.shuffle(lines)
+                for line in lines[:128]:
+                    data = json.loads(line)
+                    try:
+                        spp.add_text(data['text'])
+                    except TypeError:
+                        continue
+
+            with open(str(archivepath), 'w') as f:
+                pickle.dump(spp, f)
+
+        with open(archivepath, 'r') as f:
+            spp = pickle.load(f)
+
+
+        print(spp.ctrs['positives'].most_common(60)[8:])
+        print(spp.ctrs['negatives'].most_common(60)[8:])
         spp.plot_clouds(biz)
