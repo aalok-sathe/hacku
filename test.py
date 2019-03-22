@@ -30,10 +30,10 @@ if __name__ == '__main__':
                     except TypeError:
                         continue
 
-            with open(str(archivepath), 'w') as f:
+            with open(str(archivepath), 'wb') as f:
                 pickle.dump(spp, f)
 
-        with open(archivepath, 'r') as f:
+        with open(archivepath, 'rb') as f:
             spp = pickle.load(f)
 
 
