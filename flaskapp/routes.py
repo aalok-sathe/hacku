@@ -45,8 +45,8 @@ def analyze():
 
     data = {
         'business_id': business_id,
-        'images': [pos_img, neg_img]
-        'keywords': [pos_words, neg_words]
+        'images': [pos_img, neg_img],
+        'keywords': [pos_words, neg_words],
     }
     return jsonify(data)
 
