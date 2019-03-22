@@ -35,11 +35,13 @@ def analyze():
 
     analysis = get_business_analysis(business_id)
     pos_img, neg_img = analysis.plot_clouds(business_id)
+    pos_img = pos_img.decode('UTF-8')
+    neg_img = neg_img.decode('UTF-8')
 
     data = {
         'business_id': business_id,
         'description': 'This is bullshit',
-        'images': [str(pos_img), str(neg_img)]
+        'images': [pos_img, neg_img]
     }
     return jsonify(data)
 
