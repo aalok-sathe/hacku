@@ -88,7 +88,7 @@ class TextBody:
                         label_ = subtree.label()
                         pos_ = self.get_pos(label_)
                         if pos_ in {'NP', '@NP', 'VP', '@VP', 'NN'}:
-                            returnable[functype] += [' '.join([*subtree.flatten()])]
+                            returnable[functype] +=  ['_'.join([*subtree.flatten()])]
             returnable[functype] = set(filter(self.postproc,
                                               returnable[functype]))
 
