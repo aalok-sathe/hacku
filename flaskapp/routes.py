@@ -43,9 +43,27 @@ def analyze():
     pos_words = [(word, score/pos_words[0][1]) for word, score in pos_words]
     neg_words = [(word, score/neg_words[0][1]) for word, score in neg_words]
 
+    fig, ax = plt.subplots()
+    # Example data
+
+    bar_plots = []
+    for wordlist, color in [(pos_words, 'cyan'), (neg_words, 'red')]:
+        y_pos = np.arange(len(wordlist))
+        scores = [score for word, score in wordlist]
+        ax.barh(y_pos, scores, align='center', color=color, ecolor='black')
+        ax.set_yticks(y_pos)
+        ax.set_yticklabels([word for word, score in wordlist])
+        ax.invert_yaxis()  # labels read top-to-bottom
+        ax.set_xlabel('Salience')
+        # ax.set_title('')
+        b64_img = plt_to_b64(plt)
+        bar_plots.append(b64_img.decode('UTF-8'))
+
+
     data = {
         'business_id': business_id,
         'images': [pos_img, neg_img],
+        'bar_plots': [*bar_plots],
         'keywords': [pos_words, neg_words],
     }
     return jsonify(data)
