@@ -11,7 +11,7 @@ from pathlib import Path
 if __name__ == '__main__':
     businesses = '7sb2FYLS2sejZKxRYF9mtg', 'zvO-PJCpNk4fgAVUnExYAA', 'v*'
 
-    for biz in ['vHz*']:
+    for biz in businesses:
         spp = sentipriori.SentiPrioriProc()
         path = Path(glob('./YelpData/sample_review_by_business/' + biz)[0])
         archivepath = Path('./archive') / path.stem
@@ -33,10 +33,10 @@ if __name__ == '__main__':
             with open(str(archivepath), 'wb') as f:
                 pickle.dump(spp, f)
 
-        with open(archivepath, 'rb') as f:
+        with open(str(archivepath), 'rb') as f:
             spp = pickle.load(f)
 
 
         print(spp.ctrs['positives'].most_common(60)[8:])
         print(spp.ctrs['negatives'].most_common(60)[8:])
-        spp.plot_clouds(biz)
+        b64s = (spp.plot_clouds(str(path.stem)))

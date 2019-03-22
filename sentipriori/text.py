@@ -101,5 +101,6 @@ class TextBody:
 
         return returnable
 
+
     def getsentiment(self):
         return [sentiment.overallsentiment(t) for t in self.trees]

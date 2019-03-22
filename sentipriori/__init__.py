@@ -5,6 +5,9 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 from collections import Counter
+from io import BytesIO
+import base64
+
 # local
 import text
 import sentiment
@@ -47,11 +50,14 @@ class SentiPrioriProc:
 
 
     def plot_clouds(self, who):
+        b64s = []
         for label in ['positives', 'negatives']:
             wc = wordcloud().generate(' '.join([x for x, _ in self.ctrs[label].most_common(100)[10:]]))
             plt.title(who + '; ' + label)
             plt.imshow(wc, interpolation='bilinear')
             plt.show()
+            b64s += [plt_to_b64(plt)]
+        return b64s
 
 
 # def add_text(*args, **kwargs):
@@ -64,9 +70,19 @@ def plot_wordcloud(label, wc):
     # lower max_font_size
     # wc = wordcloud(max_font_size=40).generate(text)
     plt.xlabel(label)
-    plt.imshow(wc, interpolation="bilinear")
+    plt.imshow(wc, interpolation='bilinear')
     # plt.axis("off")
-    plt.show()
+    # plt.show()
+    return plt_to_b64(plt)
+
+
+def plt_to_b64(pltinst):
+    stringIObytes = BytesIO()
+    pltinst.savefig(stringIObytes, format='jpg')
+    stringIObytes.seek(0)
+    base64_jpgData = base64.b64encode(stringIObytes.read())
+    return base64_jpgData
+
 
 if False:
     _senti = SentiPrioriProc()
