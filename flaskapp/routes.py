@@ -55,7 +55,8 @@ def analyze():
         ax.set_yticklabels([word for word, score in wordlist])
         ax.invert_yaxis()  # labels read top-to-bottom
         ax.set_xlabel('Salience')
-        # ax.set_title('')
+        ax.set_title('')
+        # ax.xaxis('off')
         b64_img = plt_to_b64(plt)
         bar_plots.append(b64_img.decode('UTF-8'))
 
