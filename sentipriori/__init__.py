@@ -82,7 +82,7 @@ def plt_to_b64(pltinst):
     stringIObytes = BytesIO()
     pltinst.savefig(stringIObytes, format='jpg')
     stringIObytes.seek(0)
-    base64_jpgData = base64.b64encode(stringIObytes.read())#.replace('\n', '')
+    base64_jpgData = base64.b64encode(stringIObytes.read())
     return base64_jpgData
 
 
