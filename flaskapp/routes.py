@@ -1,3 +1,5 @@
+# (C) UR team @ HackU 2019
+
 from flask import jsonify, request
 from glob import glob
 import pickle

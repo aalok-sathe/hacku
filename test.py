@@ -1,3 +1,4 @@
+# (C) UR team @ HackU 2019
 
 import sentipriori
 

@@ -1,5 +1,6 @@
-from flask import jsonify
+# (C) UR team @ HackU 2019
 
+from flask import jsonify
 
 class InvalidUsage(Exception):
 
