@@ -1,10 +1,11 @@
 from flask import jsonify, request
 from glob import glob
 import pickle
+import numpy as np
 import random
 from pathlib import Path
 import json
-
+from matplotlib import pyplot as plt
 from flaskapp import app
 from flaskapp.exceptions import InvalidUsage
 from namesearch import namesearch
@@ -38,8 +39,8 @@ def analyze():
     pos_img = pos_img.decode('UTF-8')
     neg_img = neg_img.decode('UTF-8')
 
-    pos_words = analysis.ctrs['positives'].most_common(60)
-    neg_words = analysis.ctrs['negatives'].most_common(60)
+    pos_words = analysis.ctrs['positives'].most_common(20)
+    neg_words = analysis.ctrs['negatives'].most_common(20)
     pos_words = [(word, score/pos_words[0][1]) for word, score in pos_words]
     neg_words = [(word, score/neg_words[0][1]) for word, score in neg_words]
 
@@ -47,6 +48,7 @@ def analyze():
     # Example data
 
     bar_plots = []
+    #spp = sentipriori.SentiPrioriProc()
     for wordlist, color in [(pos_words, 'cyan'), (neg_words, 'red')]:
         y_pos = np.arange(len(wordlist))
         scores = [score for word, score in wordlist]
@@ -57,7 +59,7 @@ def analyze():
         ax.set_xlabel('Salience')
         ax.set_title('')
         # ax.xaxis('off')
-        b64_img = plt_to_b64(plt)
+        b64_img = sentipriori.plt_to_b64(plt)
         bar_plots.append(b64_img.decode('UTF-8'))
 
 
