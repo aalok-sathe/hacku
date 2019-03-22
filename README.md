@@ -27,7 +27,7 @@ users may be facing
   - start a server:
   ```bash
   cd stanford-corenlp-full-2018-10-05
-java -mx3g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -timeout 10000
+  java -mx3g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -timeout 10000
   ```
 - `pycorenlp, nltk`, and other packages
   ```bash
