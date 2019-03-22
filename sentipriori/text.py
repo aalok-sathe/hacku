@@ -3,6 +3,7 @@
 import os
 import sentiment
 from nltk import Tree
+import numpy as np
 from collections import defaultdict
 
 # from nltk.tokenize import PunktSentenceTokenizer
@@ -49,6 +50,12 @@ class TextBody:
              if (sent <= 1 and prob > .2)]
             for sentiments, labels in zip(self.sentiments, self.labels)
         ], [])
+
+
+    def is_negative(self):
+        if np.mean([(sent) for sent, prob in self.getsentiment()]) <= 1.5 and np.mean([(sent*prob) for sent, prob in self.getsentiment()]) <= 1.2:
+            return True
+        return False
 
 
     def neutrals(self):
