@@ -35,8 +35,8 @@ def get_obj_for_bus(bizname):
         spp = pickle.load(f)
 
 
-    print(spp.ctrs['positives'].most_common(60)[8:])
-    print(spp.ctrs['negatives'].most_common(60)[8:])
+    print(spp.ctrs['positives'].most_common(60))#[8:])
+    print(spp.ctrs['negatives'].most_common(60))#[8:])
 
     return spp
 
