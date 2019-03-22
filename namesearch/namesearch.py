@@ -23,7 +23,7 @@ def find_similar(name, city='', state=''):
 def similarity_score(business, name, city, state):
     if (city and business['city'].lower() != city) \
         or (state and business['state'].lower() != state) \
-        or len(business['name']) > len(name):
+        or len(business['name']) < len(name):
         return 0
     else:
         return fuzz.partial_ratio(business['name'].lower(), name)
