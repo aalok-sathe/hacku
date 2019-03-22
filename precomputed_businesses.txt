@@ -1,0 +1,10 @@
+vHz2RLtfUMVRPFmd7VBEHA    city: Las Vegas      state:  NV        name:  Gordon Ramsay Hells Kitchen
+7sb2FYLS2sejZKxRYF9mtg    city: Las Vegas      state:  NV        name:  Sakana
+zvO-PJCpNk4fgAVUnExYAA    city: Scottsdale     state:  AZ        name:  FOX Sports Grill
+3kdSl5mo9dWC4clrQjEDGg    city: Las Vegas      state:  NV        name:  Egg & I
+yA6dKNm_zl1ucZCnwW8ZCg    city: Scottsdale     state:  AZ        name:  Italian Grotto
+b2jN2mm9Wf3RcrZCgfo1cg    city: Cleveland      state:  OH        name:  Portside
+CRVtzesMuwHK-phmS_ojaA    city: Tempe          state:  AZ        name:  Venezias New York Style Pizzeria
+kOo4ZY2UQAX4j312mzQ8mA    city: Las Vegas      state:  NV        name:  Taco Naco
+NZnhc2sEQy3RmzKTZnqtwQ    city: Las Vegas      state:  NV        name:  Kelly Cardenas Salon - Hard Rock Hotel & Casino  
+RXBFk3tVBxiTf3uOt9KExQ    city: Verdun         state:  QC        name:  Pneus Touchette - Unipneu

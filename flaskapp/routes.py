@@ -38,10 +38,15 @@ def analyze():
     pos_img = pos_img.decode('UTF-8')
     neg_img = neg_img.decode('UTF-8')
 
+    pos_words = analysis.ctrs['positives'].most_common(60)
+    neg_words = analysis.ctrs['negatives'].most_common(60)
+    pos_words = [(word, score/pos_words[0][1]) for word, score in pos_words]
+    neg_words = [(word, score/neg_words[0][1]) for word, score in neg_words]
+
     data = {
         'business_id': business_id,
-        'description': 'This is bullshit',
         'images': [pos_img, neg_img]
+        'keywords': [pos_words, neg_words]
     }
     return jsonify(data)
 
@@ -71,9 +76,5 @@ def get_business_analysis(business_id):
 
     with open(str(archivepath), 'rb') as f:
         spp = pickle.load(f)
-
-
-    print(spp.ctrs['positives'].most_common(60)[8:])
-    print(spp.ctrs['negatives'].most_common(60)[8:])
 
     return spp
