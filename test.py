@@ -55,4 +55,4 @@ if __name__ == '__main__':
 
     for biz in businesses:
         this_obj = get_obj_for_bus(biz)
-        b64s = this_obj.plot_clouds(biz)
+        b64s = this_obj.plot_clouds(biz, plot=0)

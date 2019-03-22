@@ -53,7 +53,8 @@ class SentiPrioriProc:
         b64s = []
         for label in ['positives', 'negatives']:
             wc = wordcloud().generate(' '.join([x for x, _ in self.ctrs[label].most_common(100)[10:]]))
-            plt.title(who + '; ' + label)
+            # plt.title(who + '; ' + label)
+            plt.axis('off')
             plt.imshow(wc, interpolation='bilinear')
             if plot:
                 plt.show()
