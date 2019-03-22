@@ -34,14 +34,12 @@ def analyze():
         raise InvalidUsage('business_id not supplied', status_code=400)
 
     analysis = get_business_analysis(business_id)
-    imgs = analysis.plot_clouds(business_id)
-
-
+    pos_img, neg_img = analysis.plot_clouds(business_id)
 
     data = {
         'business_id': business_id,
         'description': 'This is bullshit',
-        'images': imgs
+        'images': [str(pos_img), str(neg_img)]
     }
     return jsonify(data)
 
