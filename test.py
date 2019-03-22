@@ -42,7 +42,16 @@ def get_obj_for_bus(bizname):
 
 
 if __name__ == '__main__':
-    businesses = '7sb2FYLS2sejZKxRYF9mtg', 'zvO-PJCpNk4fgAVUnExYAA', 'v*'
+    businesses = ['3kdSl5mo9dWC4clrQjEDGg',
+                  '7sb2FYLS2sejZKxRYF9mtg',
+                  'b2jN2mm9Wf3RcrZCgfo1cg',
+                  'CRVtzesMuwHK-phmS_ojaA',
+                  'kOo4ZY2UQAX4j312mzQ8mA',
+                  'NZnhc2sEQy3RmzKTZnqtwQ',
+                  'RXBFk3tVBxiTf3uOt9KExQ',
+                  'vHz2RLtfUMVRPFmd7VBEHA',
+                  'yA6dKNm_zl1ucZCnwW8ZCg',
+                  'zvO-PJCpNk4fgAVUnExYAA']
 
     for biz in businesses:
         this_obj = get_obj_for_bus(biz)

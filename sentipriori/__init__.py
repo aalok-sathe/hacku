@@ -49,13 +49,13 @@ class SentiPrioriProc:
         return iter(self.texts)
 
 
-    def plot_clouds(self, who, plot=False):
+    def plot_clouds(self, who, plot=0):
         b64s = []
         for label in ['positives', 'negatives']:
             wc = wordcloud().generate(' '.join([x for x, _ in self.ctrs[label].most_common(100)[10:]]))
             plt.title(who + '; ' + label)
             plt.imshow(wc, interpolation='bilinear')
-            if plot: 
+            if plot:
                 plt.show()
             b64s += [plt_to_b64(plt)]
         return b64s
